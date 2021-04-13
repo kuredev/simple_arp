@@ -31,11 +31,26 @@ module SimpleARP
       # socket.send(data, 0, SimpleARP::SockAddressLL.new(@src_if_name).to_pack_to)
     end
 
+    # @return [Integer] Return value of BasicSocket#send
+    def send_by_sock_dgram
+      bind_if(socket_dgram)
+      ether_arp = SimpleARP::EtherArp.new(@src_if_name, @dst_ip_addr).to_pack
+      socket.send(ether_arp, 0, SimpleARP::SockAddressLL.new(@src_if_name).to_pack_to)
+    end
+
     private
 
     def bind_if(socket)
       sll = SimpleARP::SockAddressLL.new(@src_if_name).to_pack_from
       socket.bind(sll)
+    end
+
+    def socket_dgram
+      @socket ||= Socket.open(
+        Socket::AF_PACKET,
+        Socket::SOCK_DGRAM,
+        ETH_P_ARP # 1544
+      )
     end
 
     def socket
