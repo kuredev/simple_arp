@@ -9,6 +9,7 @@ module SimpleARP
   ETH_TYPE_NUMBER_ARP = 0x0806
   PACKET_BROADCAST = 1
   PACKET_HOST = 0
+  TIMEOUT_TIME = 3
 
   class Client
     include SimpleARP::Util
@@ -29,6 +30,15 @@ module SimpleARP
 
       socket.send(data, 0)
       # socket.send(data, 0, SimpleARP::SockAddressLL.new(@src_if_name).to_pack_to)
+    end
+
+    # @return [Array<String>] Array of Mac Address
+    def send_and_receive
+      send
+
+      mesg, _ = socket.recvfrom(1500) # 第3引数がある→ARPしか受信しない？、ない→全部受信する？
+      target_mac_addresss = SimpleARP::RecvMessage.new(mesg).sender_mac_address
+      target_mac_addresss
     end
 
     # @return [Integer] Return value of BasicSocket#send

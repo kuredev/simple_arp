@@ -1,10 +1,10 @@
 # /usr/include/netinet/if_ether.h
-# struct  ether_arp {
-#   struct  arphdr ea_hdr;
-#   uint8_t arp_sha[ETH_ALEN];
-#   uint8_t arp_spa[4];
-#   uint8_t arp_tha[ETH_ALEN];
-#   uint8_t arp_tpa[4];
+# struct  ether_arp { 28Byte
+#   struct  arphdr ea_hdr; 8Byte
+#   uint8_t arp_sha[ETH_ALEN]; 6Byte
+#   uint8_t arp_spa[4]; 4Byte
+#   uint8_t arp_tha[ETH_ALEN]; 6Byte
+#   uint8_t arp_tpa[4]; 4Byte
 # };
 module SimpleARP
   class EtherArp

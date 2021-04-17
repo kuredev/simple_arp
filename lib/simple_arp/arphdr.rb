@@ -1,7 +1,7 @@
 module SimpleARP
   # struct arphdr
-  #   {
-  #     unsigned short int ar_hrd;
+  #   { 8Byte
+  #     unsigned short int ar_hrd; 2Byte
   #     unsigned short int ar_pro;
   #     unsigned char ar_hln;
   #     unsigned char ar_pln;

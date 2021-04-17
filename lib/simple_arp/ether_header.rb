@@ -1,8 +1,8 @@
 # struct ether_header
-# {
-#   u_int8_t  ether_dhost[ETH_ALEN];
-#   u_int8_t  ether_shost[ETH_ALEN];
-#   u_int16_t ether_type;
+# { 14Byte
+#   u_int8_t  ether_dhost[ETH_ALEN]; 6Byte
+#   u_int8_t  ether_shost[ETH_ALEN]; 6Byte
+#   u_int16_t ether_type; 2Byte
 # }
 module SimpleARP
   class EtherHeader

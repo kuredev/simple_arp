@@ -5,6 +5,7 @@ require_relative "simple_arp/arphdr"
 require_relative "simple_arp/ether_arp"
 require_relative "simple_arp/ether_header"
 require_relative "simple_arp/sock_address_ll"
+require_relative "simple_arp/recv_message"
 
 module SimpleARP
 end
